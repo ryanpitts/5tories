@@ -10,7 +10,9 @@
 </head>
 
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
+    {% block header %}
     <header></header>
+    {% endblock header %}
     
     {% block main_container %}
     <div id="main-container" class="container">
