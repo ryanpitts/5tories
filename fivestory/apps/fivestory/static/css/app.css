@@ -75,13 +75,15 @@ body {
 
 .story-frame {
     display: block;
-    height: 640px;
+    height: 560px;
     width: 480px;
     margin: 0 auto;
     position: relative;
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center center;
     background-color: #111;
+    overflow: hidden;
 }
 .story-frame img {
     width: 100%;
