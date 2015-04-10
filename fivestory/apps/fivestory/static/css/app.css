@@ -87,6 +87,8 @@ body {
     width: 100%;
     position: absolute;
     top: 0;
+    bottom: 0;
+    margin: auto;
 }
 .story-frame p {
     font-size: 13px;

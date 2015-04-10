@@ -39,14 +39,6 @@ function showFrame(frameID) {
     var img = $('.story-frame img')
         imgHeight = img.height(),
         frameHeight = $('.story-frame').height();
-        
-    if (imgHeight < frameHeight) {
-        $('.story-frame p').css({
-            'background': '#111',
-            'opacity': 1
-        });
-        img.css('margin-top', (frameHeight - imgHeight) / 2)
-    }
 }
 
 $container.on('click', 'section', function(e) {
