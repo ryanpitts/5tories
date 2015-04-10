@@ -62,7 +62,7 @@ class api(View):
             }
         else:
             response = {
-                'stories': list(Story.objects.filter(is_active=True).order_by('-created').values('id','name','tweet1_photo'))
+                'stories': list(Story.objects.filter(is_active=True).order_by('-updated').values('id','name','tweet1_photo'))
             }
 
         return JsonResponse(response)
