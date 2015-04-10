@@ -50,7 +50,7 @@ class Story(models.Model):
     def save(self, *args, **kwargs):
         self.update_twitter_data()
         super(Story, self).save(*args, **kwargs)
-
+        
     def update_twitter_data(self):
         twitter = Twython(
             TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET,
@@ -66,6 +66,8 @@ class Story(models.Model):
             tweet_data_media = tweet_data.get('entities').get('media')
             tweet_data_photo = tweet_data_media[0].get('media_url_https') if len(tweet_data_media) else None
             tweet_data_text = tweet_data.get('text')
+            tweet_data_text = strip_tweet_text(tweet_data_text)
+            
             if self.tweet1.endswith(tweet_data_id):
                 if not self.tweet1_photo: self.tweet1_photo = tweet_data_photo
                 if not self.tweet1_text: self.tweet1_text = tweet_data_text
@@ -82,4 +84,11 @@ class Story(models.Model):
                 if not self.tweet5_photo: self.tweet5_photo = tweet_data_photo
                 if not self.tweet5_text: self.tweet5_text = tweet_data_text
         
-    
+def strip_tweet_text(tweet_text):
+    terrible_array = tweet_text.strip().split(' ')
+    for horrible_bit in terrible_array:
+        if horrible_bit.startswith('http://t.co/'):
+            terrible_array.remove(horrible_bit)
+
+    im_so_sorry = (' ').join(terrible_array)
+    return im_so_sorry
