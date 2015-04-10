@@ -1,0 +1,65 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<article></article>
+{% endblock content %}
+
+{% block body_javascript_extra %}
+<script type="text/template" class="template">
+    <section id="story-frame-<%= id %>" class="story-frame">
+        <img src="<%= photo %>" alt="<%= text %>">
+        <p>
+            <%= text %>
+            <span class="locator">
+                <span id="l-frame-1"></span>
+                <span id="l-frame-2"></span>
+                <span id="l-frame-3"></span>
+                <span id="l-frame-4"></span>
+                <span id="l-frame-5"></span>
+            </span>
+        </p>
+        <a class="fa fa-arrow-left" href="/"></a>
+    </section>
+</script>
+
+<script>
+var template = _.template(
+    $("script.template").html()
+);
+var $container = $('article');
+var story;
+
+function showFrame(frameID) {
+    $('section').remove();
+    $container.prepend(
+        template(story['frame'+frameID])
+    ).css('user-select','none');
+    $container.find('span').removeClass('active');
+    $container.find('#l-frame-'+frameID).addClass('active');
+    var img = $('.story-frame img')
+        imgHeight = img.height(),
+        frameHeight = $('.story-frame').height();
+        
+    if (imgHeight < frameHeight) {
+        $('.story-frame p').css({
+            'background': '#111',
+            'opacity': 1
+        });
+        img.css('margin-top', (frameHeight - imgHeight) / 2)
+    }
+}
+
+$container.on('click', 'section', function(e) {
+    var thisFrameID = $(this).attr('id').split('-').pop(),
+        nextFrameID = (parseInt(thisFrameID) % 5) + 1;
+        
+    showFrame(nextFrameID);
+})
+
+$.getJSON("/api/stories/{{ story_id }}/")
+    .done(function(data) {
+        story = data.story;
+        showFrame(1);
+    });
+</script>
+{% endblock body_javascript_extra %}

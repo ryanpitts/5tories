@@ -1,0 +1,145 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Regular-webfont.eot');
+    src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');
+    font-weight: normal;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Bold-webfont.eot');
+    src: url('../fonts/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Bold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Bold-webfont.svg#OpenSansBold') format('svg');
+    font-weight: bold;
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.1.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-arrow-left:before {
+  content: "\f060";
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    color: #111;
+    font-size: 18px;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.story-list-item {
+    display: block;
+    min-height: 120px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+}
+.story-list-item h2 {
+    line-height: 120px;
+    margin: 0;
+}
+
+.story-frame {
+    display: block;
+    height: 640px;
+    width: 480px;
+    margin: 0 auto;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #111;
+}
+.story-frame img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+.story-frame p {
+    font-size: 13px;
+    opacity: .85;
+    color: #efefef;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 2em 1em .75em;
+    margin: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.35) 42%, rgba(0,0,0,0.35) 78%, rgba(0,0,0,0.25) 86%, rgba(0,0,0,0.15) 93%, rgba(0,0,0,0) 100%);
+}
+
+.story-frame a.fa {
+    position: absolute;
+    top: .5em;
+    left: .5em;
+    opacity: .33;
+    text-decoration: none;
+    color: #fff;
+    background-color: #000;
+    line-height: 1.5em;
+    text-align: center;
+    vertical-align: middle;
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 4px;
+}
+.story-frame .locator {
+    margin-top: .67em;
+    display: block;
+    text-align: right;
+}
+.story-frame .locator span {
+    opacity: .25;
+    height: .75em;
+    width: .75em;
+    margin: .15em;
+    border-radius: 50%;
+    background-color: #efefef;
+    display: inline-block;
+}
+.story-frame .locator span.active {
+    opacity: 1;
+}
+
+
+@media only screen and (max-width: 640px) {
+    body {
+        font-size: 16px;
+    }
+    .story-frame {
+        margin: 0;
+        width: 100%;
+    }
+}

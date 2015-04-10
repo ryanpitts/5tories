@@ -1,0 +1,33 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<article></article>
+{% endblock content %}
+
+{% block body_javascript_extra %}
+<script type="text/template" class="template">
+    <a id="story-<%= story.id %>" class="story-list-item" href="/stories/<%= story.id %>/" style="background-image: url(<%= story.tweet1_photo %>)">
+        <h2><%= story.name %></h2>
+    </a>
+</script>
+
+<script>
+_.templateSettings.variable = "story";
+var template = _.template(
+    $("script.template").html()
+);
+
+
+function showStories(data) {
+    main = $('article');
+    _.each(data, function(v, k, i) {
+        main.append(template(v));
+    })
+}
+
+$.getJSON("/api/stories/")
+    .done(function(data) {
+        showStories(data.stories);
+    });
+</script>
+{% endblock body_javascript_extra %}
