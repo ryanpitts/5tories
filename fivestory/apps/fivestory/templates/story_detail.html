@@ -46,7 +46,12 @@ $container.on('click', 'section', function(e) {
         nextFrameID = (parseInt(thisFrameID) % 5) + 1;
         
     showFrame(nextFrameID);
+});
+
+$container.on('click', '.fa', function(e) {
+    e.stopPropagation();
 })
+
 
 $.getJSON("/api/stories/{{ story_id }}/")
     .done(function(data) {
